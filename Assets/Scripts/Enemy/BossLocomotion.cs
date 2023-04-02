@@ -13,6 +13,12 @@ public class BossLocomotion : MonoBehaviour
     NavMeshAgent navMeshAgent;
     [SerializeField]
     BossStats bossStats;
+    [SerializeField]
+    public Collider weaponCollider;
+    [SerializeField]
+    public Transform attackPosition;
+    [SerializeField]
+    public Transform defaultPosition;
 
     public PlayerStats currentTarget;
     public LayerMask detectionLayer;
@@ -127,6 +133,7 @@ public class BossLocomotion : MonoBehaviour
 
     void Update_Idle()
     {
+        DisableWeaponCollider();
         bossAnimatorManager.anim.SetBool("isChasing", false);
         navMeshAgent.isStopped = true;                             // stop the agent (following)
         if (distanceFromTarget <= chaseRange)
@@ -137,6 +144,7 @@ public class BossLocomotion : MonoBehaviour
 
     void Update_Chase()
     {
+        DisableWeaponCollider();
         Debug.Log(distanceFromTarget);
         Debug.Log(bossManager.detectionRadius);
         bossAnimatorManager.anim.SetBool("isAttacking", false);
@@ -159,6 +167,8 @@ public class BossLocomotion : MonoBehaviour
 
     void Update_Attack()
     {
+        
+        EnableWeaponCollider();
         navMeshAgent.isStopped = true;                            // start the agent (following)
         
         bossAnimatorManager.anim.SetBool("isAttacking", true);
@@ -167,7 +177,10 @@ public class BossLocomotion : MonoBehaviour
             SetState(EnemyState.CHASE);
         }
     }
+
+    
     void Update_Dead() {
+        DisableWeaponCollider();
         bossAnimatorManager.anim.Play("death");
         navMeshAgent.isStopped = true;
     }
@@ -178,5 +191,29 @@ public class BossLocomotion : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, chaseRange);  // draw a circle to show chase range
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackingDistance);  // draw a circle to show chase range
+    }
+
+    // called by the animator event
+    public void ChangeCollider()
+    {
+        Debug.Log("Collide transfer");
+        if (weaponCollider != null && attackPosition != null)
+        {
+            weaponCollider.transform.position = attackPosition.position;
+        }
+    }
+
+    public void EnableWeaponCollider()
+    {
+        weaponCollider.enabled = true;
+    }
+
+    public void DisableWeaponCollider()
+    {
+        weaponCollider.enabled = false;
+    }
+
+    public void ResetCollider() {
+        weaponCollider.transform.position = defaultPosition.position;
     }
 }
