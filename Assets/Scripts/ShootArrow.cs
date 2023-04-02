@@ -8,37 +8,49 @@ using UnityEngine;
 public class ShootArrow : MonoBehaviour
 {
     [SerializeField] private GameObject arrowPrefab;
+    [SerializeField] private Transform bowPosition; // in order to spawn the arrow in the right place
     [SerializeField] private TextMeshProUGUI firePowerText;
     private double maxFirePower = 5;
     private double firePowerSpeed = 5f;
     private double firePower = 0;
-    private bool chargingBow = false;
+    private bool isChargingBow = false;
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(1))
         {
-            chargingBow = true;
+            isChargingBow = true;
+            addArrow();
         }
 
-        if (chargingBow && firePower < maxFirePower)
+        if (isChargingBow)
         {
-            firePower += Time.deltaTime * firePowerSpeed;
-        }
+            // keep increasing until maxFirePower is reached
+            if (firePower < maxFirePower)
+            {
+                firePower += Time.deltaTime * firePowerSpeed;
+            }
 
-        if (chargingBow && Input.GetMouseButtonUp(1))
-        {
-            Shoot();
-            firePower = 0;
-            chargingBow = false;
-        }
+            if (Input.GetMouseButtonUp(1))
+            {
+                shootArrow();
+                firePower = 0;
+                isChargingBow = false;
+            }
 
-        firePowerText.text = "Fire Power = " + String.Format("{0:.##}", firePower);
+            firePowerText.text = "Fire Power = " + String.Format("{0:.##}", firePower);
+        }
     }
 
-    void Shoot()
+    void shootArrow()
     {
         print("Shot an arrow!");
+    }
+
+    void addArrow()
+    {
+        print("Instantiate arrow");
+        Instantiate(arrowPrefab, bowPosition);
     }
 }

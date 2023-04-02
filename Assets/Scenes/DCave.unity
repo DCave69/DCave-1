@@ -28238,12 +28238,24 @@ PrefabInstance:
       value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 1189632484, guid: ce6ba2cff1b432248b56cc22ad90603f, type: 3}
+      propertyPath: m_Height
+      value: 2.1103706
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189632484, guid: ce6ba2cff1b432248b56cc22ad90603f, type: 3}
       propertyPath: m_Radius
       value: 0.26646507
       objectReference: {fileID: 0}
     - target: {fileID: 1189632484, guid: ce6ba2cff1b432248b56cc22ad90603f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189632484, guid: ce6ba2cff1b432248b56cc22ad90603f, type: 3}
       propertyPath: m_Center.x
       value: 0.008440018
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189632484, guid: ce6ba2cff1b432248b56cc22ad90603f, type: 3}
+      propertyPath: m_Center.y
+      value: 0.90498304
       objectReference: {fileID: 0}
     - target: {fileID: 1189632484, guid: ce6ba2cff1b432248b56cc22ad90603f, type: 3}
       propertyPath: m_Center.z
@@ -28305,7 +28317,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crusader tank_prefab Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1189632483, guid: ce6ba2cff1b432248b56cc22ad90603f, type: 3}
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: ce6ba2cff1b432248b56cc22ad90603f, type: 3}
 --- !u!4 &589561840 stripped
