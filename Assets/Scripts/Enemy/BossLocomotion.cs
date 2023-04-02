@@ -19,6 +19,8 @@ public class BossLocomotion : MonoBehaviour
     public Transform attackPosition;
     [SerializeField]
     public Transform defaultPosition;
+    [SerializeField]
+    private WeaponTrigger weaponTrigger;
 
     public PlayerStats currentTarget;
     public LayerMask detectionLayer;
@@ -75,21 +77,21 @@ public class BossLocomotion : MonoBehaviour
 
     public void HandleDetection()
     {
-        Debug.Log("Afyer hit");
+        //Debug.Log("Afyer hit");
         Collider[] colliders = Physics.OverlapSphere(transform.position, bossManager.detectionRadius, detectionLayer);
         for (int i = 0; i < colliders.Length; i++) {
             PlayerStats playerStats = colliders[i].transform.GetComponent<PlayerStats>();
-            Debug.Log(playerStats.maxHealth);
+            //Debug.Log(playerStats.maxHealth);
 
             if (playerStats != null) {
-                Debug.Log("Found player");
+                //Debug.Log("Found player");
                 Vector3 targetDirection = playerStats.transform.position - transform.position;
                 float viewableAngle = Vector3.Angle(targetDirection, transform.forward);
-                Debug.Log(viewableAngle);
+                //Debug.Log(viewableAngle);
 
                 if (viewableAngle > bossManager.minimumDetectionAngle && viewableAngle < bossManager.maximumDetectionAngle)
                 {
-                    Debug.Log("Current target is now tagged");
+                    //Debug.Log("Current target is now tagged");
                     currentTarget = playerStats;
                 }
             }
@@ -107,28 +109,6 @@ public class BossLocomotion : MonoBehaviour
 
         playerTagged = true;
         
-        //if (distanceFromTarget > stoppingDistance)
-        //{
-        //    bossAnimatorManager.anim.SetBool("isChasing", true);
-        //    navMeshAgent.SetDestination(currentTarget.transform.position);
-        //}
-        //else {
-        //    bossAnimatorManager.anim.SetBool("isChasing", false);
-        //    navMeshAgent.isStopped = true;
-        //}
-
-        //if (bossManager.isPerformingAction)
-        //{
-
-        //    navMeshAgent.enabled = false;
-        //}
-        //else {
-        //    if (distanceFromTarget > stoppingDistance) {
-        //        bossAnimatorManager.anim.SetBool("isPatrolling", true);
-        //    }
-        //}
-
-        
     }
 
     void Update_Idle()
@@ -145,8 +125,7 @@ public class BossLocomotion : MonoBehaviour
     void Update_Chase()
     {
         DisableWeaponCollider();
-        Debug.Log(distanceFromTarget);
-        Debug.Log(bossManager.detectionRadius);
+        
         bossAnimatorManager.anim.SetBool("isAttacking", false);
         bossAnimatorManager.anim.SetBool("isChasing", true);
        
@@ -215,5 +194,6 @@ public class BossLocomotion : MonoBehaviour
 
     public void ResetCollider() {
         weaponCollider.transform.position = defaultPosition.position;
+        weaponTrigger.hasCollide = false;
     }
 }

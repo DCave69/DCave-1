@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerStats : CharacterStats
 {
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +15,22 @@ public class PlayerStats : CharacterStats
     void Update()
     {
         
+    }
+    public void TakeDamage(int damage)
+    {
+        currentHealth = currentHealth - damage;
+        Debug.Log("Player:" + currentHealth);
+
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0;
+            // death;
+        }
+        else
+        {
+            //send broadcast that was hit
+        }
+        
+
     }
 }
