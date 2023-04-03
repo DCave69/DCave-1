@@ -175,6 +175,7 @@ public class BossLocomotion : MonoBehaviour
     // called by the animator event
     public void ChangeCollider()
     {
+        EnableWeaponCollider();
         Debug.Log("Collide transfer");
         if (weaponCollider != null && attackPosition != null)
         {
@@ -193,6 +194,7 @@ public class BossLocomotion : MonoBehaviour
     }
 
     public void ResetCollider() {
+        DisableWeaponCollider();
         weaponCollider.transform.position = defaultPosition.position;
         weaponTrigger.hasCollide = false;
     }

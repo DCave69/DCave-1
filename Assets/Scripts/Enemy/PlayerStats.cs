@@ -29,8 +29,10 @@ public class PlayerStats : CharacterStats
         else
         {
             //send broadcast that was hit
+            
         }
-        
+        Messenger<int>.Broadcast(GameEvent.HEALTH_CHANGED, currentHealth);
+
 
     }
 }

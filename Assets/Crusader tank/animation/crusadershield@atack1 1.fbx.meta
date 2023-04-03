@@ -1695,14 +1695,14 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.7168831
+      - time: 0.67751306
         functionName: ChangeCollider
         data: 
         objectReferenceParameter: {fileID: 4300038, guid: 111718cc154f6554682c63664d76b8b5, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 1
+      - time: 0.6850394
         functionName: ResetCollider
         data: 
         objectReferenceParameter: {fileID: 4300038, guid: 111718cc154f6554682c63664d76b8b5, type: 3}
