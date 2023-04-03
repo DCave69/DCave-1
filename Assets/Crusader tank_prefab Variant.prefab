@@ -78,7 +78,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 45621855721453737}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.176, y: 0.128, z: 0.889}
+  m_LocalPosition: {x: -0.725, y: 0.329, z: 0.889}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -110,7 +110,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5795683095532528193}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.279, y: 0.008, z: -0.03}
+  m_LocalPosition: {x: -0.279, y: -0.136, z: -0.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -128,8 +128,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.11115069
-  m_Center: {x: 0.38884926, y: 0, z: 0}
+  m_Radius: 0.23498543
+  m_Center: {x: 0.38884926, y: 0.123834684, z: -1.0593163e-15}
 --- !u!1001 &5204802131483149951
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -298,6 +298,9 @@ MonoBehaviour:
   bossStats: {fileID: 1189632487}
   weaponCollider: {fileID: 0}
   attackPosition: {fileID: 0}
+  defaultPosition: {fileID: 0}
+  weaponTrigger: {fileID: 0}
+  doorBoss: {fileID: 0}
   currentTarget: {fileID: 0}
   detectionLayer:
     serializedVersion: 2

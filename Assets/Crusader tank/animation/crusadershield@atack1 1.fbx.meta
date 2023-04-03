@@ -1702,7 +1702,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.6850394
+      - time: 0.695429
         functionName: ResetCollider
         data: 
         objectReferenceParameter: {fileID: 4300038, guid: 111718cc154f6554682c63664d76b8b5, type: 3}

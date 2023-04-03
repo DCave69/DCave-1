@@ -21,6 +21,8 @@ public class BossLocomotion : MonoBehaviour
     public Transform defaultPosition;
     [SerializeField]
     private WeaponTrigger weaponTrigger;
+    [SerializeField]
+    private GameObject doorBoss;
 
     public PlayerStats currentTarget;
     public LayerMask detectionLayer;
@@ -93,13 +95,16 @@ public class BossLocomotion : MonoBehaviour
                 {
                     //Debug.Log("Current target is now tagged");
                     currentTarget = playerStats;
+                    
                 }
             }
             Debug.Log("Player not found");
         }
 
     }
-
+    private void CloseBossDoor() {
+        doorBoss.transform.rotation = Quaternion.Euler(new Vector3(0.0f,-90.0f,0.0f));
+    }
     public void HandleMoveToTarget()
     {
         Vector3 targetDirection = currentTarget.transform.position - transform.position;
@@ -125,7 +130,8 @@ public class BossLocomotion : MonoBehaviour
     void Update_Chase()
     {
         DisableWeaponCollider();
-        
+        CloseBossDoor();
+
         bossAnimatorManager.anim.SetBool("isAttacking", false);
         bossAnimatorManager.anim.SetBool("isChasing", true);
        
