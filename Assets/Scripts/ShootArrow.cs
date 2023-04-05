@@ -8,12 +8,14 @@ using UnityEngine;
 public class ShootArrow : MonoBehaviour
 {
     [SerializeField] private GameObject arrowPrefab;
-    [SerializeField] private Transform bowPosition; // in order to spawn the arrow in the right place
+    [SerializeField] private Transform arrowSpawnpoint; // in order to spawn the arrow in the right place
     [SerializeField] private TextMeshProUGUI firePowerText;
-    private double maxFirePower = 5;
-    private double firePowerSpeed = 5f;
-    private double firePower = 0;
+    private float maxFirePower = 10f;
+    private float firePowerSpeed = 10f;
+    private float firePower = 0;
     private bool isChargingBow = false;
+
+    private GameObject currentArrow;
 
     // Update is called once per frame
     void Update()
@@ -21,7 +23,7 @@ public class ShootArrow : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             isChargingBow = true;
-            addArrow();
+            AddArrow();
         }
 
         if (isChargingBow)
@@ -34,7 +36,7 @@ public class ShootArrow : MonoBehaviour
 
             if (Input.GetMouseButtonUp(1))
             {
-                shootArrow();
+                Shoot();
                 firePower = 0;
                 isChargingBow = false;
             }
@@ -43,14 +45,17 @@ public class ShootArrow : MonoBehaviour
         }
     }
 
-    void shootArrow()
+    void Shoot()
     {
         print("Shot an arrow!");
+        currentArrow.GetComponent<Arrow>().Shoot(firePower);
+        currentArrow.GetComponent<Rigidbody>().useGravity = true;
     }
 
-    void addArrow()
+    void AddArrow()
     {
         print("Instantiate arrow");
-        Instantiate(arrowPrefab, bowPosition);
+        currentArrow = Instantiate(arrowPrefab, arrowSpawnpoint);
+        currentArrow.GetComponent<Rigidbody>().useGravity = false;
     }
 }
