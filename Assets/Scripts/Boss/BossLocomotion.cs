@@ -36,9 +36,10 @@ public class BossLocomotion : MonoBehaviour
 
     private bool playerTagged = false;
 
-    private void SetState(EnemyState newState)
+    private void SetState(EnemyState newState, bool debugging = false)
     {
-        print("newState: " + newState);
+        if (debugging)
+            print("newState: " + newState);
         state = newState;
     }
 
@@ -98,7 +99,7 @@ public class BossLocomotion : MonoBehaviour
                     
                 }
             }
-            Debug.Log("Player not found");
+            // Debug.Log("Player not found");
         }
 
     }

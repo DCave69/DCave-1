@@ -30,16 +30,19 @@ public class Arrow : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        bool debugging = false;
+
         if (collision.gameObject.tag != "Arrow" && collision.gameObject.tag != "Player")
         {
-            print(collision.gameObject.tag);
+            if (debugging) print(collision.gameObject.tag);
             Destroy(this.gameObject.GetComponent<Rigidbody>());
             Destroy(this.gameObject.GetComponent<BoxCollider>());
-
         }
         if (collision.gameObject.tag == "Enemy") {
-            this.gameObject.SetActive(false);
-            collision.gameObject.GetComponent<BossStats>().TakeDamage(10);
+            // this.gameObject.SetActive(false);
+            if (debugging) print((int)collision.impulse.magnitude / 5);
+            collision.gameObject.GetComponent<BossStats>().TakeDamage((int)collision.impulse.magnitude  / 5);
+            Destroy(this.gameObject);
         }
     }
 }

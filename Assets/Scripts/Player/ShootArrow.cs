@@ -11,6 +11,9 @@ public class ShootArrow : MonoBehaviour
     [SerializeField] private Transform arrowSpawnpoint;
     [SerializeField] private TextMeshProUGUI firePowerText;
     [SerializeField] private Transform sceneUtilsTransform; // in order to unchild the arrow when shooting
+    // [SerializeField] private Animator anim;
+
+    // private Animation pullingBowAnimation;
 
     private float maxFirePower = 50f;
     private float firePowerSpeed = 40f;
@@ -18,6 +21,11 @@ public class ShootArrow : MonoBehaviour
     private bool isChargingBow = false;
 
     private GameObject currentArrow;
+
+    private void Start()
+    {
+        // pullingBowAnimation = anim.GetComponent<Animation>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -34,6 +42,7 @@ public class ShootArrow : MonoBehaviour
             if (firePower < maxFirePower)
             {
                 firePower += Time.deltaTime * firePowerSpeed;
+                // pullingBowAnimation["PullingBow"].time = firePower / maxFirePower;
             }
 
             if (Input.GetMouseButtonUp(1))
