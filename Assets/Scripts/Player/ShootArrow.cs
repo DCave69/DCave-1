@@ -8,10 +8,12 @@ using UnityEngine;
 public class ShootArrow : MonoBehaviour
 {
     [SerializeField] private GameObject arrowPrefab;
-    [SerializeField] private Transform arrowSpawnpoint; // in order to spawn the arrow in the right place
+    [SerializeField] private Transform arrowSpawnpoint;
     [SerializeField] private TextMeshProUGUI firePowerText;
-    private float maxFirePower = 10f;
-    private float firePowerSpeed = 10f;
+    [SerializeField] private Transform sceneUtilsTransform; // in order to unchild the arrow when shooting
+
+    private float maxFirePower = 50f;
+    private float firePowerSpeed = 40f;
     private float firePower = 0;
     private bool isChargingBow = false;
 
@@ -47,14 +49,13 @@ public class ShootArrow : MonoBehaviour
 
     void Shoot()
     {
-        print("Shot an arrow!");
         currentArrow.GetComponent<Arrow>().Shoot(firePower);
+        currentArrow.GetComponent<Arrow>().transform.SetParent(sceneUtilsTransform, true);
         currentArrow.GetComponent<Rigidbody>().useGravity = true;
     }
 
     void AddArrow()
     {
-        print("Instantiate arrow");
         currentArrow = Instantiate(arrowPrefab, arrowSpawnpoint);
         currentArrow.GetComponent<Rigidbody>().useGravity = false;
     }

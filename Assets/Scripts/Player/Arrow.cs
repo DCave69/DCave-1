@@ -25,4 +25,14 @@ public class Arrow : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         Destroy(this.gameObject);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag != "Arrow" && collision.gameObject.tag != "Player")
+        {
+            print(collision.gameObject.tag);
+            Destroy(this.gameObject.GetComponent<Rigidbody>());
+            Destroy(this.gameObject.GetComponent<BoxCollider>());
+        }
+    }
 }
