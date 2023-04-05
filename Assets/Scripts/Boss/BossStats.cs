@@ -35,8 +35,8 @@ public class BossStats : CharacterStats
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            //anim.Play("death");
-            //navMeshAgent.isStopped = true;
+            anim.Play("death");
+            navMeshAgent.isStopped = true;
         }
         else {
             anim.SetTrigger("isHit");

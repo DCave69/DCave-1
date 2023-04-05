@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
+    
     private Rigidbody rb;
+    
 
     private void Start()
     {
@@ -17,7 +19,7 @@ public class Arrow : MonoBehaviour
     {
         this.GetComponent<BoxCollider>().enabled = true;
         rb.AddRelativeForce(Vector3.forward * speed, ForceMode.Impulse);
-        StartCoroutine(DestroyAfterSeconds(5f));
+        StartCoroutine(DestroyAfterSeconds(2f));
     }
 
     IEnumerator DestroyAfterSeconds(float seconds)
@@ -33,6 +35,11 @@ public class Arrow : MonoBehaviour
             print(collision.gameObject.tag);
             Destroy(this.gameObject.GetComponent<Rigidbody>());
             Destroy(this.gameObject.GetComponent<BoxCollider>());
+
+        }
+        if (collision.gameObject.tag == "Enemy") {
+            this.gameObject.SetActive(false);
+            collision.gameObject.GetComponent<BossStats>().TakeDamage(10);
         }
     }
 }

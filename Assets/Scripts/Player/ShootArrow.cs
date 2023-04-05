@@ -52,6 +52,8 @@ public class ShootArrow : MonoBehaviour
         currentArrow.GetComponent<Arrow>().Shoot(firePower);
         currentArrow.GetComponent<Arrow>().transform.SetParent(sceneUtilsTransform, true);
         currentArrow.GetComponent<Rigidbody>().useGravity = true;
+        
+        
     }
 
     void AddArrow()

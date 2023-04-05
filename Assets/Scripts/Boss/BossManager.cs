@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BossManager : MonoBehaviour
 {
+   
     [SerializeField]
     BossLocomotion bossLocomotion;
     // Start is called before the first frame update
@@ -34,4 +35,5 @@ public class BossManager : MonoBehaviour
             bossLocomotion.HandleMoveToTarget();
         }
     }
+   
 }
