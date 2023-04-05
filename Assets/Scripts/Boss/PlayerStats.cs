@@ -19,7 +19,7 @@ public class PlayerStats : CharacterStats
     public void TakeDamage(int damage)
     {
         currentHealth = currentHealth - damage;
-        Debug.Log("Player:" + currentHealth);
+        // Debug.Log("Player:" + currentHealth);
 
         if (currentHealth <= 0)
         {

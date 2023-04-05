@@ -183,7 +183,7 @@ public class BossLocomotion : MonoBehaviour
     public void ChangeCollider()
     {
         EnableWeaponCollider();
-        Debug.Log("Collide transfer");
+        // Debug.Log("Collide transfer");
         if (weaponCollider != null && attackPosition != null)
         {
             weaponCollider.transform.position = attackPosition.position;

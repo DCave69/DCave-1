@@ -47,7 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 918e4a1e01254a842a42154dcd79162d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossStats: {fileID: 1189632487, guid: ce6ba2cff1b432248b56cc22ad90603f, type: 3}
 --- !u!54 &-8901334008543954551
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -75,8 +74,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.10495905, y: 0.09817383, z: 0.7239925}
-  m_Center: {x: -0.018057287, y: 0.000058159232, z: 0.2515685}
+  m_Size: {x: 0.073062696, y: 0.09817383, z: 0.7090562}
+  m_Center: {x: -0.0021090966, y: 0.000058159232, z: 0.24410032}
 --- !u!1001 &3718089080755516032
 PrefabInstance:
   m_ObjectHideFlags: 0

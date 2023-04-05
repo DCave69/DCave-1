@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    
     private Rigidbody rb;
-    
+    private float delayToDestroyArrow = 10f;
+    private int damageDivisor = 5; // small => more damage
+
 
     private void Start()
     {
@@ -18,8 +19,9 @@ public class Arrow : MonoBehaviour
     public void Shoot(float speed)
     {
         this.GetComponent<BoxCollider>().enabled = true;
-        rb.AddRelativeForce(Vector3.forward * speed, ForceMode.Impulse);
-        StartCoroutine(DestroyAfterSeconds(2f));
+        if (rb)
+            rb.AddRelativeForce(Vector3.forward * speed, ForceMode.Impulse);
+        StartCoroutine(DestroyAfterSeconds(delayToDestroyArrow));
     }
 
     IEnumerator DestroyAfterSeconds(float seconds)
@@ -39,9 +41,8 @@ public class Arrow : MonoBehaviour
             Destroy(this.gameObject.GetComponent<BoxCollider>());
         }
         if (collision.gameObject.tag == "Enemy") {
-            // this.gameObject.SetActive(false);
             if (debugging) print((int)collision.impulse.magnitude / 5);
-            collision.gameObject.GetComponent<BossStats>().TakeDamage((int)collision.impulse.magnitude  / 5);
+            collision.gameObject.GetComponent<BossStats>().TakeDamage((int)collision.impulse.magnitude  / damageDivisor);
             Destroy(this.gameObject);
         }
     }

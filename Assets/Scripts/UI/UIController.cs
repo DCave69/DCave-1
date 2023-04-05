@@ -100,7 +100,7 @@ public class UIController : MonoBehaviour
         healthText.text = healthPoints.ToString();
         if (healthPoints >= 0) {
             healthBar[healthPoints].enabled = false;
-            Debug.Log("Image was hidden");
+            // Debug.Log("Image was hidden");
         }
         //healthBar.color = Color.Lerp(Color.red, Color.green, healthPercentage);
         //healthBar.fillAmount = healthPercentage;

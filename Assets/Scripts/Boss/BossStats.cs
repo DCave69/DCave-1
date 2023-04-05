@@ -30,7 +30,7 @@ public class BossStats : CharacterStats
 
     public void TakeDamage(int damage) {
         currentHealth = currentHealth - damage;
-        Debug.Log(currentHealth);
+        // Debug.Log(currentHealth);
 
         if (currentHealth <= 0)
         {
