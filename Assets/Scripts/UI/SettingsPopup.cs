@@ -24,8 +24,8 @@ public class SettingsPopup : BasePopup
     override public void Open()
     {
         base.Open();
-        difficultySlider.value = PlayerPrefs.GetInt("difficulty", 1);
-        UpdateDifficulty(difficultySlider.value);
+        //difficultySlider.value = PlayerPrefs.GetInt("difficulty", 1);
+        //UpdateDifficulty(difficultySlider.value);
         gameObject.SetActive(true);
     }
     override public void Close()
