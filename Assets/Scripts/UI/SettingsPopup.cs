@@ -24,8 +24,8 @@ public class SettingsPopup : BasePopup
     override public void Open()
     {
         base.Open();
-        //difficultySlider.value = PlayerPrefs.GetInt("difficulty", 1);
-        //UpdateDifficulty(difficultySlider.value);
+        difficultySlider.value = PlayerPrefs.GetInt("difficulty", 1);
+        UpdateDifficulty(difficultySlider.value);
         gameObject.SetActive(true);
     }
     override public void Close()
@@ -55,10 +55,11 @@ public class SettingsPopup : BasePopup
 
     public void UpdateDifficulty(float difficulty)
     {
-        difficultyLabel.text = "Difficulty: " + ((int)difficulty).ToString();
+        difficultyLabel.text = ((int)difficulty).ToString();
     }
     public void OnDifficultyValueChanged(float difficulty)
     {
+        Debug.Log("Difficulty: " + difficulty);
         UpdateDifficulty(difficulty);
         Messenger<int>.Broadcast(GameEvent.DIFFICULTY_CHANGED, (int)difficultySlider.value);
     }

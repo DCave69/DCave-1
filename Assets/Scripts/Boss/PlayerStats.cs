@@ -24,7 +24,7 @@ public class PlayerStats : CharacterStats
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            // death;
+            Messenger.Broadcast(GameEvent.PLAYER_DEAD);
         }
         else
         {

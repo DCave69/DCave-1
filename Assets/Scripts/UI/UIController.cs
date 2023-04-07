@@ -14,7 +14,7 @@ public class UIController : MonoBehaviour
     //[SerializeField] private Image crossHair;
     [SerializeField] private OptionsPopup optionsPopup;
     [SerializeField] private SettingsPopup settingsPopup;
-    //[SerializeField] private GameOverPopup gameOverPopup;
+    [SerializeField] private GameOverPopup gameOverPopup;
 
     private int popupsActive = 0;
     private void Awake()
@@ -25,7 +25,7 @@ public class UIController : MonoBehaviour
     }
     public void ShowGameOverPopup()
     {
-        //gameOverPopup.Open();
+        gameOverPopup.Open();
     }
     private void OnPopupOpened()
     {
