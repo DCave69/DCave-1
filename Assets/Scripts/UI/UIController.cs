@@ -9,7 +9,7 @@ using static UnityEngine.GraphicsBuffer;
 public class UIController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreValue;
-    [SerializeField] private Image[] healthBar;
+    // [SerializeField] private Image[] healthBar;
     [SerializeField] private TextMeshProUGUI healthText;
     //[SerializeField] private Image crossHair;
     [SerializeField] private OptionsPopup optionsPopup;
@@ -98,12 +98,6 @@ public class UIController : MonoBehaviour
     private void UpdateHealth(int healthPoints)
     {
         healthText.text = healthPoints.ToString();
-        if (healthPoints >= 0) {
-            healthBar[healthPoints].enabled = false;
-            // Debug.Log("Image was hidden");
-        }
-        //healthBar.color = Color.Lerp(Color.red, Color.green, healthPercentage);
-        //healthBar.fillAmount = healthPercentage;
     }
     private void OnHealthChanged(int healthPoints)
     {

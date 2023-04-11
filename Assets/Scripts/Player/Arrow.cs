@@ -40,10 +40,16 @@ public class Arrow : MonoBehaviour
             Destroy(this.gameObject.GetComponent<Rigidbody>());
             Destroy(this.gameObject.GetComponent<BoxCollider>());
         }
-        if (collision.gameObject.tag == "Enemy") {
-            if (debugging) print((int)collision.impulse.magnitude / 5);
+        if (collision.gameObject.tag == "Boss") {
+            if (debugging) print((int)collision.impulse.magnitude / damageDivisor);
             collision.gameObject.GetComponent<BossStats>().TakeDamage((int)collision.impulse.magnitude  / damageDivisor);
             Destroy(this.gameObject);
         }
+        //if (collision.gameObject.tag == "Enemy")
+        //{
+        //    if (debugging) print((int)collision.impulse.magnitude / damageDivisor);
+        //    collision.gameObject.GetComponent<CharacterStats>().GetDamaged((int)collision.impulse.magnitude / damageDivisor);
+        //    Destroy(this.gameObject);
+        //}
     }
 }

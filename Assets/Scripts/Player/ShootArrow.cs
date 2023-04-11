@@ -16,6 +16,8 @@ public class ShootArrow : MonoBehaviour
     private float firePowerSpeed = 40f;
     private float firePower = 0;
     private bool isChargingBow = false;
+    private float reloadDelay = 1f;
+    private bool isReloading = false;
 
     private GameObject currentArrow;
 
@@ -29,6 +31,11 @@ public class ShootArrow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isReloading)
+        {
+            return;
+        }
+
         if (Input.GetMouseButtonDown(1))
         {
             isChargingBow = true;
@@ -41,7 +48,6 @@ public class ShootArrow : MonoBehaviour
             if (firePower < maxFirePower)
             {
                 firePower += Time.deltaTime * firePowerSpeed;
-                // pullingBowAnimation["PullingBow"].time = firePower / maxFirePower;
             }
 
             if (Input.GetMouseButtonUp(1))
@@ -62,6 +68,7 @@ public class ShootArrow : MonoBehaviour
         currentArrow.GetComponent<Rigidbody>().useGravity = true;
         animator.SetTrigger("OnShot");
         animator.speed = 0.5f;
+        StartCoroutine("Reload");
     }
 
     void AddArrow()
@@ -69,5 +76,12 @@ public class ShootArrow : MonoBehaviour
         currentArrow = Instantiate(arrowPrefab, arrowSpawnpoint);
         currentArrow.GetComponent<Rigidbody>().useGravity = false;
         animator.SetTrigger("OnPulling");
+    }
+
+    IEnumerator Reload()
+    {
+        isReloading = true;
+        yield return new WaitForSeconds(reloadDelay);
+        isReloading = false;
     }
 }

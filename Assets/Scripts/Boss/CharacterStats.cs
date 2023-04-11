@@ -7,15 +7,9 @@ public class CharacterStats : MonoBehaviour
     public int healthLevel = 10;
     public int maxHealth;
     public int currentHealth;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public void GetDamaged(int damage)
     {
-        
+        currentHealth -= damage;
     }
 }
