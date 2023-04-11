@@ -9,7 +9,7 @@ public class Archer : CharacterStats
     // Start is called before the first frame update
     void Start()
     {
-        maxHealth = 50;
+        maxHealth = 20;
         currentHealth = maxHealth;
     }
 
@@ -28,6 +28,6 @@ public class Archer : CharacterStats
 
     void Die()
     {
-        print("die!");
+        Destroy(this.gameObject);
     }
 }
