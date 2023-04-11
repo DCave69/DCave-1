@@ -15,8 +15,8 @@ public class ShootArrow : MonoBehaviour
     private float maxFirePower = 50f;
     private float firePowerSpeed = 40f;
     private float firePower = 0;
-    private bool isChargingBow = false;
     private float reloadDelay = 1f;
+    private bool isChargingBow = false;
     private bool isReloading = false;
 
     private GameObject currentArrow;
@@ -68,7 +68,7 @@ public class ShootArrow : MonoBehaviour
         currentArrow.GetComponent<Rigidbody>().useGravity = true;
         animator.SetTrigger("OnShot");
         animator.speed = 0.5f;
-        StartCoroutine("Reload");
+        // StartCoroutine("Reload");
     }
 
     void AddArrow()
