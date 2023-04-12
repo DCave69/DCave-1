@@ -11,7 +11,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreValue;
     // [SerializeField] private Image[] healthBar;
     [SerializeField] private TextMeshProUGUI healthText;
-    //[SerializeField] private Image crossHair;
+    [SerializeField] private Image crossHair;
     [SerializeField] private OptionsPopup optionsPopup;
     [SerializeField] private SettingsPopup settingsPopup;
     [SerializeField] private GameOverPopup gameOverPopup;
@@ -82,7 +82,7 @@ public class UIController : MonoBehaviour
             Time.timeScale = 1; // unpause the game
             Cursor.lockState = CursorLockMode.Locked; // lock cursor at center
             Cursor.visible = false; // hide cursor
-            //crossHair.gameObject.SetActive(true); // show the crosshair
+            crossHair.gameObject.SetActive(true); // show the crosshair
             //Messenger.Broadcast(GameEvent.GAME_ACTIVE);
 
         }
@@ -91,7 +91,7 @@ public class UIController : MonoBehaviour
             Time.timeScale = 0; // pause the game
             Cursor.lockState = CursorLockMode.None; // let cursor move freely
             Cursor.visible = true; // show the cursor
-            //crossHair.gameObject.SetActive(false); // turn off the crosshair
+            crossHair.gameObject.SetActive(false); // turn off the crosshair
             //Messenger.Broadcast(GameEvent.GAME_INACTIVE);
         }
     }
