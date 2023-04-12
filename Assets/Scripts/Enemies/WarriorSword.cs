@@ -5,13 +5,15 @@ using UnityEngine;
 public class WarriorSword : MonoBehaviour
 {
     [SerializeField] private PlayerStats player;
-    private bool canAttack = true;
+    [SerializeField] private WarriorLocomotion warrior;
+
+    private bool onAttackDelay = false;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            if (canAttack)
+            if (warrior.canAttack && !onAttackDelay)
             {
                 player.TakeDamage(1);
                 StartCoroutine("AttackDelay");
@@ -21,8 +23,8 @@ public class WarriorSword : MonoBehaviour
 
     IEnumerator AttackDelay()
     {
-        canAttack = false;
+        onAttackDelay = true;
         yield return new WaitForSeconds(1f);
-        canAttack = true;
+        onAttackDelay = false;
     }
 }

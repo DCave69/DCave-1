@@ -9,6 +9,7 @@ public class WarriorLocomotion : MonoBehaviour
     [SerializeField] NavMeshAgent navMeshAgent;
     [SerializeField] Animator animator;
     [SerializeField] WanderingAI randomMovement;
+    [SerializeField] WarriorSword sword;
 
     public PlayerStats currentTarget;
     public LayerMask detectionLayer;
@@ -20,7 +21,7 @@ public class WarriorLocomotion : MonoBehaviour
     private enum EnemyState { WALKING, CHASE, ATTACK };
     private EnemyState state;
 
-    private bool stopped = true;
+    public bool canAttack = true;
 
     private void SetState(EnemyState newState, bool debugging = false)
     {
@@ -33,6 +34,7 @@ public class WarriorLocomotion : MonoBehaviour
     void Start()
     {
         SetState(EnemyState.WALKING);
+        sword.gameObject.GetComponent<MeshCollider>().enabled = false;
     }
 
     // Update is called once per frame
@@ -98,5 +100,17 @@ public class WarriorLocomotion : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, chaseRange);  // draw a circle to show chase range
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackingDistance);  // draw a circle to show chase range
+    }
+
+    void OnAllowAttack()
+    {
+        StartCoroutine("ToggleSwordCollider");
+    }
+
+    IEnumerator ToggleSwordCollider()
+    {
+        sword.gameObject.GetComponent<MeshCollider>().enabled = true;
+        yield return new WaitForSeconds(0.7f);
+        sword.gameObject.GetComponent<MeshCollider>().enabled = false;
     }
 }

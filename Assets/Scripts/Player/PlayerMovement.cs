@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public float sprintSpeed = 5f;
 
     float speedBoost = 1f;
+    float pushForce = 5f;
     Vector3 velocity;
     void Start()
     {
@@ -45,5 +46,14 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Rigidbody rb = hit.collider.attachedRigidbody;
+        if (rb != null && !rb.isKinematic)
+        {
+            rb.velocity = hit.moveDirection * pushForce;
+        }
     }
 }
