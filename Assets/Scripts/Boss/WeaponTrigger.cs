@@ -21,7 +21,7 @@ public class WeaponTrigger : MonoBehaviour
             if (other.tag == "Player") {
                 if (hasCollide == false) { 
                     hasCollide = true;
-                    playerStats.TakeDamage(1);
+                    playerStats.TakeDamage(2);
 
             }
         }    

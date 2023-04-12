@@ -28,7 +28,7 @@ public class BossLocomotion : MonoBehaviour
     public LayerMask detectionLayer;
 
     public float distanceFromTarget;
-    private float chaseRange = 10f;                     // when target is closer than this, chase!
+    private float chaseRange = 50f;                     // when target is closer than this, chase!
     private float attackingDistance = 3f;
 
     private enum EnemyState { IDLE, CHASE, ATTACK, DEAD };
