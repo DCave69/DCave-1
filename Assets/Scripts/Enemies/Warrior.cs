@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Warrior : CharacterStats
 {
+    [SerializeField] private GameObject explosionPrefab;
     private int damageDivisor = 5;
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,23 @@ public class Warrior : CharacterStats
 
     void Die()
     {
+        DisableChildren();
+        var explo = Instantiate(explosionPrefab, this.gameObject.transform);
+        explo.GetComponent<ParticleSystem>().Play();
+        StartCoroutine("DeleteGameObject");
+    }
+
+    IEnumerator DeleteGameObject()
+    {
+        yield return new WaitForSeconds(3f);
         Destroy(this.gameObject);
+    }
+
+    void DisableChildren()
+    {
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActiveRecursively(false);
+        }
     }
 }
