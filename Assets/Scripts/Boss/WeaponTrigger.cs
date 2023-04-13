@@ -22,7 +22,6 @@ public class WeaponTrigger : MonoBehaviour
                 if (hasCollide == false) { 
                     hasCollide = true;
                     playerStats.TakeDamage(2);
-
             }
         }    
     }
