@@ -8,6 +8,7 @@ public class WarriorSword : MonoBehaviour
     [SerializeField] private WarriorLocomotion warrior;
 
     private bool onAttackDelay = false;
+    private float attackDelay = 1f;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -24,7 +25,7 @@ public class WarriorSword : MonoBehaviour
     IEnumerator AttackDelay()
     {
         onAttackDelay = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(attackDelay);
         onAttackDelay = false;
     }
 }

@@ -68,7 +68,7 @@ public class ShootArrow : MonoBehaviour
         currentArrow.GetComponent<Rigidbody>().useGravity = true;
         animator.SetTrigger("OnShot");
         animator.speed = 0.5f;
-        // StartCoroutine("Reload");
+        StartCoroutine("Reload");
     }
 
     void AddArrow()
